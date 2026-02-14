@@ -51,7 +51,7 @@
                 throw new ArgumentException("Tipo de recurrencia inválido");
             }
 
-            return resultado;s
+            return resultado;
         }
     }
 }
