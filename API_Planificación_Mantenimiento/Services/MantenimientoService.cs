@@ -7,6 +7,12 @@
             if (string.IsNullOrWhiteSpace(tipo))
                 throw new ArgumentException("El tipo de recurrencia es obligatorio");
 
+            if (cada <= 0)
+                throw new ArgumentException("El valor 'cada' debe ser mayor que cero");
+
+            if (fin < inicio)
+                throw new ArgumentException("El ciclo final no puede ser menor que el ciclo inicial");
+
             var resultado = new List<int>();
 
             if (tipo == "ciclos")
@@ -22,14 +28,18 @@
 
                 for (int i = inicio; i <= fin; i++)
                 {
-                    if (i % 2 != 0) // ciclos impares
+                    if (i % 2 != 0)
                     {
                         contadorUso++;
 
                         if (contadorUso == cada)
                         {
-                            if (i + 1 <= fin)
-                                resultado.Add(i + 1);
+                            // coincide con el ejemplo [5, 11]
+                            resultado.Add(i);
+
+                            // Versión que daba [6, 12] por enunciado
+                            // if (i + 1 <= fin)
+                            //     resultado.Add(i + 1);
 
                             contadorUso = 0;
                         }
@@ -41,8 +51,7 @@
                 throw new ArgumentException("Tipo de recurrencia inválido");
             }
 
-            return resultado;
+            return resultado;s
         }
     }
-
 }
